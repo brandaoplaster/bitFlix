@@ -8,4 +8,13 @@ class Movie < ApplicationRecord
   validates :video_key, presence: true
   validates :episode_number, presence: true, uniqueness: { scope: :serial_id }, if: ->{ serie.present? }
   validates :category, presence: true, if: ->{ serie.nil? }
+  validate  :highlight_episode
+
+  private
+
+  def highlight_episode
+    if self.serie.present? && self.highlighted == true
+      errors.add(:highlight_episode, "It's not possible to highlight an serie episode")
+    end
+  end
 end
