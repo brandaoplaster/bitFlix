@@ -6,6 +6,7 @@ class Movie < ApplicationRecord
   belongs_to :category, optional: true
   has_many :reviews, as: :reviewable
   has_one :watched_serie, class_name: "Serie", foreign_key: "last_watched_episode_id", dependent: :nullify
+  has_many :players, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true
