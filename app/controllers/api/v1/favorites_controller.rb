@@ -15,4 +15,8 @@ class Api::V1::FavoritesController < ApplicationController
   def set_favorite
     @favorite = Favorite.find_by(favorite_type: params[:type].capitalize!, favorite_id: params[:id], user: current_user)
   end
+
+  def favorite_params
+    params.require(:favorite).permit(:favorite_type, :favorite_id)
+  end
 end
