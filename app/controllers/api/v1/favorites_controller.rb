@@ -2,6 +2,8 @@ class Api::V1::FavoritesController < ApplicationController
   before_action :set_favorite, only: :destroy
 
   def index
+    @favorite = current_user.favorite.all
+    render json: Api::V1::WatchableSerializer.new(@favorite.map(&:favoritable)).serialized_json
   end
 
   def create
