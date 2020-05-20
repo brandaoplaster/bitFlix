@@ -6,6 +6,13 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
+    @review = Review.new(review_params)
+
+    if @review.save
+      render json: @review
+    else
+      render json: { errors: @review.errors.full_messages }, stutus: :unprocessable_entity
+    end
   end
 
   private
