@@ -1,5 +1,8 @@
 class Api::V1::ReviewsController < ApplicationController
+
   def index
+    @reviews = Review.where(reviewable_id: params[:id], reviewable_type: params[:type].capitalize!)
+    render json: Api::V1::ReviewSerializer.new(@reviews, include: [:user]).serializerd_json
   end
 
   def create
