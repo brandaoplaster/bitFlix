@@ -7,6 +7,13 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def create
+    @favoite = Favorite.new(favorite_params)
+
+    if @favorite.save
+      head :ok
+    else
+      render json: { errors: @favorite.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
