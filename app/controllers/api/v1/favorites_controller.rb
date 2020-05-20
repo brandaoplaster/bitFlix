@@ -17,6 +17,8 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def destroy
+    @favorite.destroy
+    head :ok
   end
 
   private
