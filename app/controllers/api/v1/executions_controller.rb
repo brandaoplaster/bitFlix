@@ -8,6 +8,11 @@ class Api::V1::ExecutionsController < ApplicationController
   end
 
   def update
+    if @player.update(player_params)
+      render json: @player
+    else
+      render json: { errors: @player.errors.full_message }, status: :unprocessable_entity
+    end
   end
 
   private
