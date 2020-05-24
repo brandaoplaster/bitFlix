@@ -1,24 +1,38 @@
-# README
+# BitFlix
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BitFlix is an app created taking inspiration from NetFlix has the following features:
 
-Things you may want to cover:
+* Movies
+* Series
+* Player
+* Recommendation
+* Category
+* Review
+* Favorites
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+>You just need have docker-compose installed in your machine.
 
-* Configuration
+### Getting Started
+>To get the app running, run the following commands:
 
-* Database creation
+  ```docker
+    docker-compose build
+    docker-compose run --rm webiste bundle install
+    docker-compose run --rm website bundle exec rails db:create
+    docker-compose run --rm website bundle exec rails db:migrate
+    docker-compose up
+  ```
 
-* Database initialization
+## Built With
 
-* How to run the test suite
+* [Ruby on Rails](https://rubyonrails.org/) - Dependency Management
 
-* Services (job queues, cache servers, search engines, etc.)
+## Authors
 
-* Deployment instructions
+* **Lucas Brandão** - [brandaoplaster](https://github.com/brandaoplaster)
 
-* ...
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
